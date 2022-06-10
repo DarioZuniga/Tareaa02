@@ -1,2 +1,0 @@
-# Tienda_Dario
- tienda
