@@ -1,0 +1,38 @@
+  
+*{
+    font-family: arial;
+    background-color: whitesmoke
+}
+body{
+    background-image : url('../static.img/image_processing20200508-15757-1ho6nro.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+h2{
+                background-color: buttonshadow;
+                color: black;
+            }
+            #encabezado{
+                background-color: black;
+                color: #00cc00;
+                text-align: center
+                
+            }
+            
+            .articulo{
+                background-color: whitesmoke;
+                font-family: sans-serif;
+                color: black
+            }
+            footer span{
+                color: red;
+            }
+            a:hover{
+                background-color: red;
+                color: white;
+                
+            }
+            a{
+                background-color: greenyellow;
+                color: grey;
+            }
