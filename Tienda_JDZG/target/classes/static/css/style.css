@@ -1,0 +1,38 @@
+  
+*{
+    font-family: arial;
+    background-color: whitesmoke
+}
+body{
+    background-image : url('../static.img/water_background_lrs-1-1024x1016.jpgjpg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+h2{
+                background-color: greenyellow;
+                color: white;
+            }
+            #encabezado{
+                background-color: black;
+                color: #00cc00;
+                text-align: center
+                
+            }
+            
+            .articulo{
+                background-color: bisque;
+                font-family: sans-serif;
+                color: black
+            }
+            footer span{
+                color: red;
+            }
+            a:hover{
+                background-color: red;
+                color: white;
+                
+            }
+            a{
+                background-color: blue;
+                color: yellow;
+            }
