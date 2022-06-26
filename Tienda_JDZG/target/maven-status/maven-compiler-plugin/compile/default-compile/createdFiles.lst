@@ -1,1 +1,3 @@
+com\tienda\controller\IndexController.class
+com\tienda\domain\Cliente.class
 com\tienda\TiendaJdzgApplication.class
