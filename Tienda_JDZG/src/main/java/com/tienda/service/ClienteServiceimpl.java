@@ -4,84 +4,64 @@
  */
 package com.tienda.service;
 
+import com.tienda.dao.ClienteDao;
+import com.tienda.dao.CreditoDao;
 import com.tienda.domain.Cliente;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author josed
- */
+
+@Service
 public class ClienteServiceimpl implements ClienteService{
 
+    @Autowired
+    private ClienteDao clienteDao;
+     @Autowired
+    private CreditoDao creditoDaoDao;
+    
+    /**
+     *
+     * @return
+     */
     @Override
+    @Transitional(readOnly =true)
+    
+//    public List<Cliente> getClientes() {
+//        return(List<Cliente>)clienteDao.findAll();
+//    
+    
+    
     public List<Cliente> getClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return(List<Cliente>)clienteDao.findAll();
     }
-
-    @Override
+ @Override
+    @Transactional
     public void save(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Credito credito=cliente.getCredito();
+        credito=creditoDaoDao.save(credito);
+        cliente.setCredito(credito);
+        clienteDao.save(cliente);
+        
     }
-
-    @Override
+ @Override
     public void delete(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        clienteDao.delete(cliente);
 
-    @Override
-    public Cliente getCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+@Transitional(readOnly=true)
+
+
+
+
+
+ @Override
+    public Cliente getCliente(Cliente cliente) {
+        return Cliente.findById(cliente.getCodigoPostal()).orElse(null);
+    }
+    
     
     
 }
-//@Service
-//public class ClienteServiceimpl implements ClienteService{
-//
-//    @Autowired
-//    private ClienteDao clienteDao;
-//    
-//    /**
-//     *
-//     * @return
-//     */
-//    @Override
-//    @Transitional(readOnly =true)
-//    
-////    public List<Cliente> getClientes() {
-////        return(List<Cliente>)clienteDao.findAll();
-////    
-//    
-//    
-//    public List<Cliente> getClientes() {
-//        return(List<Cliente>)clienteDao.findAll();
-//    }
-// @Override
-//    @Transactional
-//    public void save(Cliente cliente) {
-//        clienteDao.save(cliente);
-//        
-//    }
-// @Override
-//    public void delete(Cliente cliente) {
-//        clienteDao.delete(cliente);
-//
-//    }
-//@Transitional(readOnly=true)
-//
-//
-//
-//
-//
-// @Override
-//    public Cliente getCliente(Cliente cliente) {
-//        return Cliente.findById(cliente.getCodigoPostal()).orElse(null);
-//    }
-//    
-//    
-//    
-//}
 

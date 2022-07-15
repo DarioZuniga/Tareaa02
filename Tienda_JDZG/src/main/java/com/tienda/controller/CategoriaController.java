@@ -2,7 +2,6 @@ package com.tienda.controller;
 
 import com.tienda.dao.ClienteDao;
 import com.tienda.domain.Cliente;
-import com.tienda.service.ClienteService;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j
-public class IndexController {
+public class CategoriaController {
     
     //Se crea en tiempo de ejecución si aún no se ha creado...
     @Autowired
-    private ClienteService clienteService;
-    
+    private ClienteDao clienteDao;
 
-    @GetMapping("/cliente/listado")
+    @GetMapping("/")
     public String inicio(Model model) {
-        var clientes=clienteService.getClientes();
         log.info("Ahora se usa arquitectura MVC");
         
         
