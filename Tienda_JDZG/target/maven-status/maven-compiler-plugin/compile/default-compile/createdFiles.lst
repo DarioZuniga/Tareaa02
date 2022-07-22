@@ -1,6 +1,6 @@
 com\tienda\service\ClienteService.class
-com\tienda\TiendaApplication.class
 com\tienda\controller\IndexController.class
 com\tienda\domain\Cliente.class
-com\tienda\service\ClienteServiceimpl.class
+com\tienda\service\ClienteServiceImpl.class
+com\tienda\TiendaApplication.class
 com\tienda\dao\ClienteDao.class
