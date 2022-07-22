@@ -1,65 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tienda.service;
 
 import com.tienda.dao.ArticuloDao;
 import com.tienda.domain.Articulo;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class ArticuloServiceimpl implements ArticuloService{
+public class ArticuloServiceImpl implements ArticuloService {
 
+    //Se crea en tiempo de ejecución si aún no se ha creado...
     @Autowired
-    private ArticuloDao categoriaDao;
+    private ArticuloDao articuloDao;
     
+    @Override
+    @Transactional(readOnly = true)
+    public List<Articulo> getArticulos(boolean activos) {
+        
+        var lista =(List<Articulo>) articuloDao.findAll();
+        if (activos) {
+            lista.removeIf(e -> !e.isActivo());
+        }
+        
+        return lista;
+    }
 
     @Override
-    @Transitional(readOnly =true)
-    
-    public List<Articulo> getArticulos(boolean activos) {
-        var lista= (List<Articulo>) categoriaDao.findAll();
-    if (activos){
-        lista.removeIf(e->!e.isActivo());
-    } 
-    return lista;
-    }
-       
-    
-    
-    
-    public List<Articulo> getArticulos() {
-        return(List<Articulo>)categoriaDao.findAll();
-    }
- @Override
     @Transactional
-    public void save(Articulo categoria) {
-        categoriaDao.save(categoria);
-        
+    public void save(Articulo articulo) {
+        articuloDao.save(articulo);
     }
- @Override
-    public void delete(Articulo categoria) {
-        categoriaDao.delete(categoria);
 
+    @Override
+    @Transactional
+    public void delete(Articulo articulo) {
+        articuloDao.delete(articulo);
     }
-@Transitional(readOnly=true)
 
-
-
-
-
- @Override
-    public Articulo getArticulo(Articulo categoria) {
-        return Articulo.findById(categoria.getIdArticulo()).orElse(null);
+    @Override
+    @Transactional(readOnly = true)
+    public Articulo getArticulo(Articulo articulo) {
+        return articuloDao.findById(articulo.getIdArticulo()).orElse(null);
     }
-    
-    
     
 }
-

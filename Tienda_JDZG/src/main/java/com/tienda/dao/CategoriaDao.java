@@ -1,8 +1,8 @@
 package com.tienda.dao;
 
-import com.tienda.domain.Cliente;
+import com.tienda.domain.Categoria;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CategoriaDao extends CrudRepository<Cliente, Long>{
+public interface CategoriaDao extends CrudRepository<Categoria, Long>{
     
 }
