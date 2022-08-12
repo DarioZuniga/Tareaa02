@@ -19,6 +19,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Autowired
     private CreditoDao creditoDao;
     
+    @Override
+    @Transactional(readOnly = true)
+    public Cliente getByApellidos(Cliente cliente) {        
+        return ((List<Cliente>) clienteDao.findByApellidos(cliente.getApellidos())).get(0);
+    }
     
     @Override
     @Transactional(readOnly = true)
